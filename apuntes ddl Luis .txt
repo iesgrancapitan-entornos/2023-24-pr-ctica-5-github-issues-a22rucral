@@ -1,0 +1,65 @@
+apuntes ddl Luis 
+Encabezado de un script 
+drop database if exists NombreBaseDatos; ""Sirve para borrar si ya esta creada 
+create database Nombre; ""Sirve para crear la base de datos de nuevo 
+use Nombre; ""Sirve para seleccionar la base de datos 
+
+create table Nombre(); "" Creamos la tabla y entre los parentesis metemos los atributos 
+
+ejemplo de tabla con los distintos tipos de atributo 
+create tabla Humildad(
+codigo int(5) primary key,
+num_costaleros int(3),
+fecha_creacion date,
+itinerario varchar(50)
+);
+
+entre los atributos se pone una coma y se indica la clave primaria 
+Para añadir una restriccion ya sea , el minimo de precio es de 100. 
+constraint check_precio check (precio > 100),
+constraint nombre_restriccion (que quieras) check ( condicion)
+
+
+Para añadir una clave foranea es asi 
+constraint fk_nombre_clave foreign key(nombre fk en la tabla) references tabla_de_donde_viene(nombre del atributo en esa tabla)
+
+ejemplo: queremos tener el cod de articulos en la tabla de pedidos:
+constraint fk_cod_articulos foreign key (cod_articulos) references articulos(cod)
+
+Tanto la clave foranea como la clave de donde viene, tiene que tener el mismo tipo y mismo tamaño. 
+
+
+Un listado de posibles restricciones : 	
+constraint check_sexo check (sexo = 'M' or sexo = 'H'), ""Que el sexo sea M o F 
+constraint check_provincia check (provincia = UPPER(provincia))  "" que las provincias las escriban en mayuscula
+
+
+dos ejemplos de expresiones regulares : Mirate un poco que significa cada cosa 
+ CONSTRAINT chk_DNI CHECK (REGEXP_LIKE(dni, '^\d{3}-\d{1}-[A-Za-z]$')),
+ constraint check_telf check (REGEXP_LIKE(telefono,'^95\d{7}$')) 
+
+
+Que la posciion este entre esas opciones. 
+constraint check_posicion check (posicion in ('portero', 'defensa', 'centrocampista', 'delantero')),
+
+
+Para insertar valores : 
+INSERT INTO equipos (cod, nombre, estadio, aforo, ciudad, año_fun, NumTitulos)
+VALUES 
+  (1, 'madrid', 'Bernabeu', 50000, 'Madrid', 1990, 3),
+  (2, 'Sevilla', 'Sanchez', 45000, 'Sevilla', 1985, 5);
+
+
+Para añadir o quitar columnas con comandos 
+alter table equipos add column NumTitulos int(9); 
+alter table equipos drop column aforo;
+
+
+
+Para comprobar unicamente el dia y mes de una fecha 
+constraint check_date check (DATE_FORMAT(fecha, '%m-%d') >= '06-21' and DATE_FORMAT(fecha, '%m-%d') <= '09-21' and DATE_FORMAT(fecha, '%m-%d') != '12-25'),
+Las fechas enteras se escribene el el formato YYYY/MM/DD.
+
+
+
+
