@@ -39,7 +39,7 @@ dos ejemplos de expresiones regulares : Mirate un poco que significa cada cosa
  constraint check_telf check (REGEXP_LIKE(telefono,'^95\d{7}$')) 
 
 
-Que la posciion este entre esas opciones. 
+Que la posción este entre esas opciones. 
 constraint check_posicion check (posicion in ('portero', 'defensa', 'centrocampista', 'delantero')),
 
 
