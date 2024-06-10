@@ -15,7 +15,7 @@ itinerario varchar(50)
 );
 
 entre los atributos se pone una coma y se indica la clave primaria 
-Para añadir una restriccion ya sea , el minimo de precio es de 100. 
+Para añadir una restricción ya sea , el minimo de precio es de 100. 
 constraint check_precio check (precio > 100),
 constraint nombre_restriccion (que quieras) check ( condicion)
 
